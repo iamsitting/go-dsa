@@ -62,6 +62,35 @@ func solve(targetSum int, numbers []int) ([]int, error) {
 	}
 }
 
+func howSum3(targetSum int, numbers []int, memo map[int][]int) ([]int, error) {
+	if val, ok := memo[targetSum]; ok {
+		if val != nil {
+			return val, nil
+		} else {
+			return nil, fmt.Errorf("no more")
+		}
+	}
+	if targetSum == 0 {
+		return []int{}, nil
+	}
+	if targetSum < 0 {
+		return nil, fmt.Errorf("no more")
+	}
+
+	for _, num := range numbers {
+		rem := targetSum - num
+		res, e := howSum3(rem, numbers, memo)
+		if e != nil {
+			memo[targetSum] = append(res, num)
+			return memo[targetSum], nil
+		}
+	}
+
+	memo[targetSum] = nil
+
+	return nil, fmt.Errorf("no more")
+}
+
 func main() {
 	array1 := []int{5, 3, 4, 7}
 	array2 := []int{2, 4}
