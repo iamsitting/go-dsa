@@ -53,17 +53,24 @@ func howSum2(targetSum int, numbers []int, addends []int, memo map[int]bool) (bo
 	return false, addends
 }
 
+func solve(targetSum int, numbers []int) ([]int, error) {
+	ok, res := howSum2(targetSum, numbers, []int{}, map[int]bool{})
+	if ok {
+		return res, nil
+	} else {
+		return nil, fmt.Errorf("the sum can't be made with these numbers")
+	}
+}
+
 func main() {
 	array1 := []int{5, 3, 4, 7}
 	array2 := []int{2, 4}
 	array3 := []int{7, 14}
 
-	_, res := howSum2(7, array1, []int{}, map[int]bool{})
-	fmt.Println(res)
-	_, res = howSum2(7, array2, []int{}, map[int]bool{})
-	fmt.Println(res)
-	_, res = howSum2(300, array3, []int{}, map[int]bool{})
-	fmt.Println(res)
-
-	// fmt.Println(canSum(300, array3, map[int]bool{}))
+	res, e := solve(7, array1)
+	fmt.Println(res, e)
+	res, e = solve(7, array2)
+	fmt.Println(res, e)
+	res, e = solve(300, array3)
+	fmt.Println(res, e)
 }
