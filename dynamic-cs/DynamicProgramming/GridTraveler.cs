@@ -30,7 +30,7 @@ public static class GridTraveler
         {
             return 1;
         }
-        var res = Solve(x - 1, y) + Solve(x, y - 1);
+        var res = Solve(x - 1, y, memo) + Solve(x, y - 1, memo);
         memo[key] = res;
         return res;
     }

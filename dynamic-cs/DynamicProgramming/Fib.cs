@@ -13,7 +13,7 @@ public static class Fib
     {
         if (memo.TryGetValue(n, out int value)) return value;
         if (n < 2) return 1;
-        var res = Solve(n - 1) + Solve(n - 2);
+        var res = Solve(n - 1, memo) + Solve(n - 2, memo);
         memo[n] = res;
         return res;
     }

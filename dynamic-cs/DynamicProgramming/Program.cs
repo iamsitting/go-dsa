@@ -2,4 +2,5 @@
 
 Console.WriteLine("Hello, World!");
 // Fib.Test();
-GridTraveler.Test();
+// GridTraveler.Test();
+CanSum.Test();
