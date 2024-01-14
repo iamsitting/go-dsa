@@ -5,4 +5,4 @@ Console.WriteLine("Hello, World!");
 // GridTraveler.Test();
 // CanSum.Test();
 // HowSum.Test();
-BestSum.Test();
+CanConstruct.Test();
