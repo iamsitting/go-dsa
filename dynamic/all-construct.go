@@ -15,9 +15,8 @@ func allConstruct(target string, wordBank []string) [][]string {
 }
 
 func solve(target string, wordBank []string) [][]string {
-	fmt.Println("target", target)
 	if target == "" {
-		return [][]string{}
+		return [][]string{{}}
 	}
 
 	result := [][]string{}
@@ -26,12 +25,11 @@ func solve(target string, wordBank []string) [][]string {
 		if strings.Index(target, word) == 0 {
 			suffix := target[len(word):]
 			suffixCombo := solve(suffix, wordBank)
-			targetCombo := [][]string{}
-			for i, c := range suffixCombo {
-				targetCombo[i] = append([]string{word}, c...)
+			for _, item := range suffixCombo {
+				combination := append([]string{word}, item...)
+				result = append(result, combination)
 			}
 
-			result = append(result, targetCombo...)
 		}
 	}
 
