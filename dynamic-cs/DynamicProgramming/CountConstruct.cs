@@ -41,6 +41,7 @@ public static class CountConstruct
     public static void Test()
     {
         Console.WriteLine(Solve("abcdef", ["ab", "abc", "cd", "def", "abcd"]));
+        Console.WriteLine(Solve("abcdef", ["ab", "abc", "cd", "def", "abcd", "ef"]));
         Console.WriteLine(Solve("skateboard", ["bo", "rd", "ate", "t", "boar", "sk"]));
         Console.WriteLine(Solve("eeeeeeeeeeeeeeeeeeeeeeeeeeee", ["e", "eee", "eeeee"], []));
     }
