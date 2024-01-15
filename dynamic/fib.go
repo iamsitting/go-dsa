@@ -28,7 +28,24 @@ func fib2(n int, memo map[int]int) int {
 	return memo[n]
 }
 
+func fib3(n int) int {
+	table := make([]int, n+1)
+	table[0] = 1
+	for i, entry := range table {
+		if i+1 <= n {
+			table[i+1] += entry
+		}
+		if i+2 <= n {
+			table[i+2] += entry
+		}
+	}
+
+	return table[n-1]
+}
+
 func main() {
+	fmt.Println(fib3(6))
+	fmt.Println(fib3(50))
 	fmt.Println(fib2(6, map[int]int{}))
 	fmt.Println(fib2(7, map[int]int{}))
 	fmt.Println(fib2(8, map[int]int{}))
