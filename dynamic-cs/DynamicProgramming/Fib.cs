@@ -18,6 +18,18 @@ public static class Fib
         return res;
     }
 
+    private static int TabSolve(int n)
+    {
+        var table = new int[n+1];
+        table[1] = 1;
+        for(var i = 0; i <= n; i++)
+        {
+            if (i + 1 <= n) table[i + 1] += table[i];
+            if (i + 2 <= n) table[i + 2] += table[i];
+        }
+        return table[n];
+    }
+
     public static void Test()
     {
         Console.WriteLine("Testing Fib");
@@ -25,5 +37,9 @@ public static class Fib
         Console.WriteLine(Solve(5));
         Console.WriteLine(Solve(25, []));
         Console.WriteLine("\n\n");
+        Console.WriteLine(TabSolve(6));
+        Console.WriteLine(TabSolve(7));
+        Console.WriteLine(TabSolve(8));
+        Console.WriteLine(TabSolve(26));
     }
 }

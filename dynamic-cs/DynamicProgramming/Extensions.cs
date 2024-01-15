@@ -7,6 +7,12 @@ public static class Extensions
         return $"[{string.Join(",", array)}]";
     }
 
+    public static string Dump(this bool[]? array)
+    {
+        if (array == null) return "null";
+        return $"[{string.Join(",", array)}]";
+    }
+
     public static string Dump(this string[][]? array)
     {
         if (array == null) return "null";
