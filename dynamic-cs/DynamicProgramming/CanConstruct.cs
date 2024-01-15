@@ -2,6 +2,30 @@ namespace DynamicProgramming;
 
 public static class CanConstruct
 {
+
+    private static bool TabSolve(string target, string[] wordBank)
+    {
+        var table = new bool[target.Length + 1];
+        table[0] = true;
+        for(var i = 0; i <= target.Length; i++)
+        {
+            if(table[i])
+            {
+                foreach(var word in wordBank)
+                {
+                    if(i + word.Length <= target.Length)
+                    {
+                        var prefix = target.Substring(i, word.Length);
+                        if(prefix == word)
+                        {
+                            table[i + word.Length] = true;
+                        }
+                    }                    
+                }
+            }
+        }
+        return table[target.Length];
+    }
     private static bool Solve(string target, string[] wordBank)
     {
         if (target == "") return true;
@@ -45,5 +69,9 @@ public static class CanConstruct
         Console.WriteLine(Solve("abcdef", ["ab", "abc", "cd", "def", "abcd"]));
         Console.WriteLine(Solve("skateboard", ["bo", "rd", "ate", "t", "boar", "sk"]));
         Console.WriteLine(Solve("eeeeeeeeeeeeeeeeeeeeeeeeeeee", ["e", "eee", "eeeee"], []));
+        Console.WriteLine("Tab Solve");
+        Console.WriteLine(TabSolve("abcdef", ["ab", "abc", "cd", "def", "abcd"]));
+        Console.WriteLine(TabSolve("skateboard", ["bo", "rd", "ate", "t", "boar", "sk"]));
+        Console.WriteLine(TabSolve("eeeeeeeeeeeeeeeeeeeeeeeeeeee", ["e", "eee", "eeeee"]));
     }
 }
