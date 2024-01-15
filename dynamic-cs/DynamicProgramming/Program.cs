@@ -4,6 +4,6 @@ Console.WriteLine("Hello, World!");
 // Fib.Test();
 // GridTraveler.Test();
 // CanSum.Test();
-BestSum.Test();
+AllConstruct.Test();
 // CountConstruct.Test();
 // AllConstruct.Test();
